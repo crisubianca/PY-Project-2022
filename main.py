@@ -53,30 +53,49 @@ def writeLinks():
     f.close()
 
 
+# recipeUsed = "https://jamilacuisine.ro/dovlecei-pane-in-crusta-de-pesmet-si-in-aluat/"
 recipeUsed = "https://jamilacuisine.ro/ciorba-de-fasole-verde-de-post-reteta-video/"
-
 
 def scrapeRecipe(recipeUsed):
     page = requests.get(recipeUsed)
     print("URL:", recipeUsed)
     print("******************\n")
     ingredients = []
+    title = ""
 
     soup = BeautifulSoup(page.text, 'html.parser')
-    title = soup.find_all("h1", {"class": "tdb-title-text"})
-    for ti in title:
-        print(ti.text)
+    titleText = soup.find_all("h1", {"class": "tdb-title-text"})
+    for ti in titleText:
+        # print(ti.text)
+        title += ti.text
 
     ingred = soup.find_all("div", {"class": "wprm-recipe-ingredient-group"})
     for ing in ingred:
         ingredients.append(ing.text)
 
-    print(ingredients)
+    # print(title, "\n", ingredients)
+    return title, ingredients
 
-    # fileName = res.text + ".txt"
+def writeInFile(recipeUsed):
+    title, ingredients = scrapeRecipe(recipeUsed)
+    # print(title, "\n", ingredients)
+    fileName = title + ".txt"
+    # print(fileName)
+    f = open(fileName, 'w', encoding='utf-8')
+    f.write(title + '\n')
+
+    f.write("Ingrediente:\n")
+    for i in ingredients:
+        # print(i)
+        f.write(i + '\n')
+
+    f.close()
 
 
-scrapeRecipe(recipeUsed)
 
+
+writeInFile(recipeUsed)
+
+# scrapeRecipe(recipeUsed)
 # getRecipesLinksByCategory('aperitive')
 # writeLinks()
