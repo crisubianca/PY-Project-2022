@@ -10,7 +10,7 @@ directory = "recipes/"
 recipesLinksFile = "links.txt"
 categories = ['aperitive', 'ciorbe-si-supe', 'conserve-muraturi', 'dulciuri', 'mancaruri', 'paine', 'salate', 'torturi',
               'diverse']
-
+counterFileName = 1
 
 def getRecipesLinksByCategory(category):
     link = "https://jamilacuisine.ro/retete-video/" + category
@@ -52,10 +52,14 @@ def writeLinks():
 
     f.close()
 
+# recipeUsed = "https://jamilacuisine.ro/tocanita-de-ciuperci-un-preparat-foarte-gustos/"
+# recipeUsed = "https://jamilacuisine.ro/msemen-marocan-placinte-marocane-reteta-video/"
+# recipeUsed = input("Enter recipe link: ")
+
 def scrapeRecipe(recipeUsed):
     page = requests.get(recipeUsed)
     print("URL:", recipeUsed)
-    print("******************\n")
+    print("******************")
     ingredients = []
     title = ""
 
@@ -70,15 +74,16 @@ def scrapeRecipe(recipeUsed):
         if ing.text != "▢":
             ingredients.append(ing.text)
 
-    print(title, "\n", ingredients)
+    print(title, "\n", ingredients, "\n")
     return title, ingredients
 
-def writeInFile(recipeUsed):
+def writeInFile(recipeUsed, counterFileName):
     title, ingredients = scrapeRecipe(recipeUsed)
     # print(title, "\n", ingredients)
-    fileName = title + ".txt"
+    fileName = str(counterFileName) + ".txt"
+    counterFileName +=1
     # print(fileName)
-    f = open(fileName, 'w', encoding='utf-8')
+    f = open(directory + fileName, 'w', encoding='utf-8')
     f.write(title + '\n')
 
     f.write("Ingrediente:\n")
@@ -99,18 +104,19 @@ def getAllRecipes(recipesLinksFile):
     f.close()
     return links
 
+# insertRecipe = input("Insert your recipe here -> ")
 def scrapeAndWrite():
     links = getAllRecipes(recipesLinksFile)
+    counterFileName = 1
     for l in links:
-        writeInFile(l)
+        writeInFile(l, counterFileName)
+        counterFileName += 1
 
-recipeUsed = "https://jamilacuisine.ro/tocanita-de-ciuperci-un-preparat-foarte-gustos/"
-# recipeUsed = "https://jamilacuisine.ro/msemen-marocan-placinte-marocane-reteta-video/"
-# recipeUsed = input("Enter recipe link: ")
-#
-# scrapeAndWrite()
+
+
+scrapeAndWrite()
 # # print(getAllRecipes(recipesLinksFile))
-writeInFile(recipeUsed)
+# writeInFile(recipeUsed, counterFileName)
 # scrapeRecipe(recipeUsed)
 # getRecipesLinksByCategory('aperitive')
 # # writeLinks()
