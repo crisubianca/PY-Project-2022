@@ -27,8 +27,8 @@ def getRecipesLinksByCategory(category):
         #     data = line.get('href')
         #     print(str(data))
         result = re.search('(?<=href=").*?(?=" rel=)', str(line))
-        recipesLinks.append(result.group())
-        # print(result.group())
+        recipesLinks.append(result)
+    #     print(result.group())
     # print(recipesLinks)
 
     return recipesLinks
@@ -52,10 +52,6 @@ def writeLinks():
 
     f.close()
 
-
-# recipeUsed = "https://jamilacuisine.ro/dovlecei-pane-in-crusta-de-pesmet-si-in-aluat/"
-recipeUsed = "https://jamilacuisine.ro/ciorba-de-fasole-verde-de-post-reteta-video/"
-
 def scrapeRecipe(recipeUsed):
     page = requests.get(recipeUsed)
     print("URL:", recipeUsed)
@@ -71,9 +67,10 @@ def scrapeRecipe(recipeUsed):
 
     ingred = soup.find_all("div", {"class": "wprm-recipe-ingredient-group"})
     for ing in ingred:
-        ingredients.append(ing.text)
+        if ing.text != "▢":
+            ingredients.append(ing.text)
 
-    # print(title, "\n", ingredients)
+    print(title, "\n", ingredients)
     return title, ingredients
 
 def writeInFile(recipeUsed):
@@ -86,16 +83,34 @@ def writeInFile(recipeUsed):
 
     f.write("Ingrediente:\n")
     for i in ingredients:
-        # print(i)
-        f.write(i + '\n')
+        if i:
+            f.write(i + '\n')
 
     f.close()
 
+def getAllRecipes(recipesLinksFile):
+    links = []
+    f = open(directory + recipesLinksFile, 'r')
+    while True:
+        s = f.readline().strip()
+        if not s:
+            break
+        links.append(s)
+    f.close()
+    return links
 
+def scrapeAndWrite():
+    links = getAllRecipes(recipesLinksFile)
+    for l in links:
+        writeInFile(l)
 
-
+recipeUsed = "https://jamilacuisine.ro/tocanita-de-ciuperci-un-preparat-foarte-gustos/"
+# recipeUsed = "https://jamilacuisine.ro/msemen-marocan-placinte-marocane-reteta-video/"
+# recipeUsed = input("Enter recipe link: ")
+#
+# scrapeAndWrite()
+# # print(getAllRecipes(recipesLinksFile))
 writeInFile(recipeUsed)
-
 # scrapeRecipe(recipeUsed)
 # getRecipesLinksByCategory('aperitive')
-# writeLinks()
+# # writeLinks()
