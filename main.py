@@ -3,29 +3,47 @@ from bs4 import BeautifulSoup
 import json
 
 directory = "recipes/"
+# https://jamilacuisine.ro/dovlecei-pane-in-crusta-de-pesmet-si-in-aluat/
 
 def scrapeRecipe():
     link = input("Insert you recipe here -> ")
     page = requests.get(link)
     # print("\nURL:", link)
     # print("******************")
-
-    ingredients = []
-    title = []
-
     soup = BeautifulSoup(page.text, 'html.parser')
-    titleText = soup.find_all("h1", {"class": "tdb-title-text"})
-    for ti in titleText:
-        title.append("Titlu reteta")
-        title.append(ti.text)
 
-    ingred = soup.find_all("div", {"class": "wprm-recipe-ingredient-group"})
-    for ing in ingred:
-        ingredients.append("Ingrediente")
-        ingredients.append(ing.text)
+    ingredientName = []
+    ingredientAmount = []
+    ingredientUnit = []
 
-    # print(title, "\n", ingredients, "\n")
-    return title, ingredients
+    # titlul retetei
+    title = soup.select('.tdb-title-text')[0].text.strip().replace("/", "").split("–")[0]
+    print("recipe name :", title)
+
+    # grupele de ingrediente -> ex. vezi reteta cu dovlecei, are 2 : pt dovlecei in aluat/crusta de pesmet
+    ingredient_groups = soup.select('.wprm-recipe-ingredient-group')
+    print("ingredient group(s) :", ingredient_groups)
+
+
+    ingName = soup.find_all("span", {"class": "wprm-recipe-ingredient-name"})
+    for i in ingName:
+        ingredientName.append(i.text)
+
+    print("ingredient name :", ingredientName)
+
+    ingAmount = soup.find_all("span", {"class": "wprm-recipe-ingredient-amount"})
+    for i in ingAmount:
+        ingredientAmount.append(i.text)
+
+    print("ingredient amount :", ingredientAmount)
+
+    ingUnit = soup.find_all("span", {"class": "wprm-recipe-ingredient-unit"})
+    for i in ingUnit:
+        ingredientUnit.append(i.text)
+
+    print("ingredient unit :", ingredientUnit)
+
+
 
 def convertListToDictionary(lst):
     res_dct = {lst[i]: lst[i + 1] for i in range(0, len(lst), 2)}
@@ -41,5 +59,5 @@ def createJsonFile():
     jsonFile.write(jsonString)
     print("Check your ShoppingCart.json file! :)")
 
-createJsonFile()
+scrapeRecipe()
 
