@@ -22,26 +22,34 @@ def scrapeRecipe():
 
     # grupele de ingrediente -> ex. vezi reteta cu dovlecei, are 2 : pt dovlecei in aluat/crusta de pesmet
     ingredient_groups = soup.select('.wprm-recipe-ingredient-group')
-    print("ingredient group(s) :", ingredient_groups)
 
+    if len(ingredient_groups) == 1:
+        try:
+            # linia pe care se afla un ingredient dintr un grup de ingrediente
+            ingredients_unparsed = ingredient_groups[0].select('.wprm-recipe-ingredients > .wprm-recipe-ingredient')
+        except:
+            return
+        
+    #      extragem informatiile despre fiecare ingredient: amount, unit, name
+        for i in ingredients_unparsed:
+            # ingredient amount
+            ingredient_amount = i.select('.wprm-recipe-ingredient-amount')
+            ingredient_amount_parsed = ''
+            if ingredient_amount:
+                ingredient_amount_parsed = i.select('.wprm-recipe-ingredient-amount')[0].text.strip()
 
-    ingName = soup.find_all("span", {"class": "wprm-recipe-ingredient-name"})
-    for i in ingName:
-        ingredientName.append(i.text)
+            # ingredient unit
+            ingredient_unit = i.select('.wprm-recipe-ingredient-unit')
+            ingredient_unit_parsed = ''
+            if ingredient_unit:
+                ingredient_unit_parsed = i.select('.wprm-recipe-ingredient-unit')[0].text.strip()
 
-    print("ingredient name :", ingredientName)
+            # ingredient name
+            ingredient_name = i.select('.wprm-recipe-ingredient-name')
+            ingredient_name_parsed = ''
+            if ingredient_name:
+                ingredient_name_parsed = i.select('.wprm-recipe-ingredient-name')[0].text.strip()
 
-    ingAmount = soup.find_all("span", {"class": "wprm-recipe-ingredient-amount"})
-    for i in ingAmount:
-        ingredientAmount.append(i.text)
-
-    print("ingredient amount :", ingredientAmount)
-
-    ingUnit = soup.find_all("span", {"class": "wprm-recipe-ingredient-unit"})
-    for i in ingUnit:
-        ingredientUnit.append(i.text)
-
-    print("ingredient unit :", ingredientUnit)
 
 
 
