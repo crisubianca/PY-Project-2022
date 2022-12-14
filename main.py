@@ -1,122 +1,45 @@
 import requests
 from bs4 import BeautifulSoup
-import re
+import json
 
 directory = "recipes/"
-# f = open(directory + "test.txt", 'w')
-#
-# f.write("test")
-# f.close()
-recipesLinksFile = "links.txt"
-categories = ['aperitive', 'ciorbe-si-supe', 'conserve-muraturi', 'dulciuri', 'mancaruri', 'paine', 'salate', 'torturi',
-              'diverse']
-counterFileName = 1
 
-def getRecipesLinksByCategory(category):
-    link = "https://jamilacuisine.ro/retete-video/" + category
-    recipesLinks = []
+def scrapeRecipe():
+    link = input("Insert you recipe here -> ")
     page = requests.get(link)
-    # pageSource = page.text
-    # pageSource = pageSource.split('\n')
-    print("URL:", link)
-    print("******************\n")
+    # print("\nURL:", link)
+    # print("******************")
 
-    soup = BeautifulSoup(page.text, 'html.parser')
-    for line in soup.find_all("div", {"class": "tdb_module_loop td_module_wrap td-animation-stack td-cpt-post"}):
-        # for line in soup.find_all("a"):
-        #     data = line.get('href')
-        #     print(str(data))
-        result = re.search('(?<=href=").*?(?=" rel=)', str(line))
-        recipesLinks.append(result)
-    #     print(result.group())
-    # print(recipesLinks)
-
-    return recipesLinks
-
-
-def getRecipesLinks():
-    recipesLinks = []
-
-    for c in categories:
-        recipesLinks.extend(getRecipesLinksByCategory(c))
-
-    return recipesLinks
-
-
-def writeLinks():
-    recipesLinks = getRecipesLinks()
-    f = open(directory + recipesLinksFile, 'w')
-
-    for c in recipesLinks:
-        f.write(c + '\n')
-
-    f.close()
-
-# recipeUsed = "https://jamilacuisine.ro/tocanita-de-ciuperci-un-preparat-foarte-gustos/"
-# recipeUsed = "https://jamilacuisine.ro/msemen-marocan-placinte-marocane-reteta-video/"
-# recipeUsed = input("Enter recipe link: ")
-
-def scrapeRecipe(recipeUsed):
-    page = requests.get(recipeUsed)
-    print("URL:", recipeUsed)
-    print("******************")
     ingredients = []
-    title = ""
+    title = []
 
     soup = BeautifulSoup(page.text, 'html.parser')
     titleText = soup.find_all("h1", {"class": "tdb-title-text"})
     for ti in titleText:
-        # print(ti.text)
-        title += ti.text
+        title.append("Titlu reteta")
+        title.append(ti.text)
 
     ingred = soup.find_all("div", {"class": "wprm-recipe-ingredient-group"})
     for ing in ingred:
-        if ing.text != "▢":
-            ingredients.append(ing.text)
+        ingredients.append("Ingrediente")
+        ingredients.append(ing.text)
 
-    print(title, "\n", ingredients, "\n")
+    # print(title, "\n", ingredients, "\n")
     return title, ingredients
 
-def writeInFile(recipeUsed, counterFileName):
-    title, ingredients = scrapeRecipe(recipeUsed)
-    # print(title, "\n", ingredients)
-    fileName = str(counterFileName) + ".txt"
-    counterFileName +=1
-    # print(fileName)
-    f = open(directory + fileName, 'w', encoding='utf-8')
-    f.write(title + '\n')
+def convertListToDictionary(lst):
+    res_dct = {lst[i]: lst[i + 1] for i in range(0, len(lst), 2)}
+    return res_dct
 
-    f.write("Ingrediente:\n")
-    for i in ingredients:
-        if i:
-            f.write(i + '\n')
+def createJsonFile():
+    title, ingredients = scrapeRecipe()
+    dictionary = {}
+    dictionary.update(convertListToDictionary(title))
+    dictionary.update(convertListToDictionary(ingredients))
+    jsonString = json.dumps(dictionary, indent=2)
+    jsonFile = open(directory + "shoppingCart.json", "w")
+    jsonFile.write(jsonString)
+    print("Check your ShoppingCart.json file! :)")
 
-    f.close()
+createJsonFile()
 
-def getAllRecipes(recipesLinksFile):
-    links = []
-    f = open(directory + recipesLinksFile, 'r')
-    while True:
-        s = f.readline().strip()
-        if not s:
-            break
-        links.append(s)
-    f.close()
-    return links
-
-# insertRecipe = input("Insert your recipe here -> ")
-def scrapeAndWrite():
-    links = getAllRecipes(recipesLinksFile)
-    counterFileName = 1
-    for l in links:
-        writeInFile(l, counterFileName)
-        counterFileName += 1
-
-
-
-scrapeAndWrite()
-# # print(getAllRecipes(recipesLinksFile))
-# writeInFile(recipeUsed, counterFileName)
-# scrapeRecipe(recipeUsed)
-# getRecipesLinksByCategory('aperitive')
-# # writeLinks()
