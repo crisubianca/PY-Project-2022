@@ -63,7 +63,8 @@ def writeInJson(shopping_cart):
 def main():
     links = ['https://jamilacuisine.ro/dovlecei-pane-in-crusta-de-pesmet-si-in-aluat/',
              'https://jamilacuisine.ro/chec-pufos-cu-cacao-reteta-video/',
-             'https://jamilacuisine.ro/budinca-de-dovlecei-cu-bacon-reteta-video/']
+             'https://jamilacuisine.ro/budinca-de-dovlecei-cu-bacon-reteta-video/',
+             'https://jamilacuisine.ro/dovlecei-cu-sos-de-smantana-reteta-video/']
     for link in links:
         scrapeRecipe(link)
 

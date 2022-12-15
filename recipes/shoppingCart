@@ -1,6 +1,6 @@
 {
     "dovlecei": {
-        "amount": "1",
+        "amount": 2.0,
         "unit": "kg"
     },
     "pesmet": {
@@ -16,7 +16,7 @@
         "unit": ""
     },
     "ierburi aromatice": {
-        "amount": "1",
+        "amount": 2.0,
         "unit": "lingura"
     },
     "sare": {
@@ -60,7 +60,7 @@
         "unit": "g"
     },
     "patrunjel": {
-        "amount": "1",
+        "amount": 2.0,
         "unit": "legatura"
     },
     "cascaval": {
@@ -69,6 +69,22 @@
     },
     "ceapa mare": {
         "amount": "1",
+        "unit": ""
+    },
+    "ceapa": {
+        "amount": "1",
+        "unit": ""
+    },
+    "smantana": {
+        "amount": "200",
+        "unit": "g"
+    },
+    "smantana pentru gatit": {
+        "amount": "200",
+        "unit": "ml"
+    },
+    "catei de usturoi": {
+        "amount": "3-4",
         "unit": ""
     }
 }
