@@ -1,0 +1,74 @@
+{
+    "dovlecei": {
+        "amount": "1",
+        "unit": "kg"
+    },
+    "pesmet": {
+        "amount": "150",
+        "unit": "g"
+    },
+    "faina": {
+        "amount": 600.0,
+        "unit": "g"
+    },
+    "oua": {
+        "amount": 16.0,
+        "unit": ""
+    },
+    "ierburi aromatice": {
+        "amount": "1",
+        "unit": "lingura"
+    },
+    "sare": {
+        "amount": "",
+        "unit": ""
+    },
+    "piper": {
+        "amount": "",
+        "unit": ""
+    },
+    "lapte": {
+        "amount": 300.0,
+        "unit": "ml"
+    },
+    "zahar": {
+        "amount": "200",
+        "unit": "g"
+    },
+    "zahar vanilat": {
+        "amount": "16",
+        "unit": "g"
+    },
+    "ulei": {
+        "amount": 7.0,
+        "unit": "linguri"
+    },
+    "cacao": {
+        "amount": "2",
+        "unit": "linguri"
+    },
+    "praf de copt": {
+        "amount": "10",
+        "unit": "g"
+    },
+    "morcovi mici": {
+        "amount": "4",
+        "unit": ""
+    },
+    "bacon": {
+        "amount": "200",
+        "unit": "g"
+    },
+    "patrunjel": {
+        "amount": "1",
+        "unit": "legatura"
+    },
+    "cascaval": {
+        "amount": "200",
+        "unit": "g"
+    },
+    "ceapa mare": {
+        "amount": "1",
+        "unit": ""
+    }
+}
