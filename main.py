@@ -7,16 +7,24 @@ import pdb
 
 directory = "recipes/"
 
+# "dovlecei": [{"unit":"lingura", "qty":"3"},
+#              {"unit":"kg","qty":5"}]
+
 recipe = {} # it's not an actual recipe, more like a list of shopping cart
 
 def custom_merge(dictionary, subdictionary, ingredient_name):
-    if ingredient_name in dictionary and dictionary[ingredient_name]['unit'] == subdictionary['unit']:
-        try:
-            dictionary[ingredient_name]['amount'] = float(dictionary[ingredient_name]['amount']) + float(subdictionary['amount'])
-        except ValueError:
-            pass
+    if ingredient_name in dictionary  :
+        for i in range(len(dictionary[ingredient_name])):
+            if dictionary[ingredient_name][i]['unit'] == subdictionary['unit']:
+                try:
+                    dictionary[ingredient_name][i]['amount'] = float(dictionary[ingredient_name][i]['amount']) + float(subdictionary['amount'])
+                except ValueError as error:
+                    print(error)
+            else :
+                dictionary[ingredient_name].append(subdictionary)
     else:
-        dictionary[ingredient_name] = subdictionary
+        dictionary[ingredient_name] =[subdictionary]
+
 
 def scrapeRecipe(link):
     page = requests.get(link)
@@ -50,7 +58,10 @@ def scrapeRecipe(link):
             # construim ingredientul
             ingredient = {'amount': ingredient_amount_parsed, 'unit': ingredient_unit_parsed}
             # i = ingredient_amount_parsed + " " + ingredient_unit_parsed + " " + ingredient_name_parsed
-
+            # ingredient_informations = []
+            # ingredient_informations.append(ingredient)
+            # print(recipe)
+            # custom_merge(recipe, ingredient_informations, ingredient_name_parsed)
             custom_merge(recipe, ingredient, ingredient_name_parsed)
 
 
@@ -61,10 +72,10 @@ def writeInJson(shopping_cart):
 
 
 def main():
-    links = ['https://jamilacuisine.ro/dovlecei-pane-in-crusta-de-pesmet-si-in-aluat/',
-             'https://jamilacuisine.ro/chec-pufos-cu-cacao-reteta-video/',
-             'https://jamilacuisine.ro/budinca-de-dovlecei-cu-bacon-reteta-video/',
-             'https://jamilacuisine.ro/dovlecei-cu-sos-de-smantana-reteta-video/']
+    links = ['https://jamilacuisine.ro/budinca-de-dovlecei-cu-bacon-reteta-video/',
+             'https://jamilacuisine.ro/dovlecei-cu-sos-de-smantana-reteta-video/',
+             'https://jamilacuisine.ro/dovlecei-pane-in-crusta-de-pesmet-si-in-aluat/'
+             ]
     for link in links:
         scrapeRecipe(link)
 

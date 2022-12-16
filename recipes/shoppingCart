@@ -1,90 +1,124 @@
 {
-    "dovlecei": {
-        "amount": 2.0,
-        "unit": "kg"
-    },
-    "pesmet": {
-        "amount": "150",
-        "unit": "g"
-    },
-    "faina": {
-        "amount": 600.0,
-        "unit": "g"
-    },
-    "oua": {
-        "amount": 16.0,
-        "unit": ""
-    },
-    "ierburi aromatice": {
-        "amount": 2.0,
-        "unit": "lingura"
-    },
-    "sare": {
-        "amount": "",
-        "unit": ""
-    },
-    "piper": {
-        "amount": "",
-        "unit": ""
-    },
-    "lapte": {
-        "amount": 300.0,
-        "unit": "ml"
-    },
-    "zahar": {
-        "amount": "200",
-        "unit": "g"
-    },
-    "zahar vanilat": {
-        "amount": "16",
-        "unit": "g"
-    },
-    "ulei": {
-        "amount": 7.0,
-        "unit": "linguri"
-    },
-    "cacao": {
-        "amount": "2",
-        "unit": "linguri"
-    },
-    "praf de copt": {
-        "amount": "10",
-        "unit": "g"
-    },
-    "morcovi mici": {
-        "amount": "4",
-        "unit": ""
-    },
-    "bacon": {
-        "amount": "200",
-        "unit": "g"
-    },
-    "patrunjel": {
-        "amount": 2.0,
-        "unit": "legatura"
-    },
-    "cascaval": {
-        "amount": "200",
-        "unit": "g"
-    },
-    "ceapa mare": {
-        "amount": "1",
-        "unit": ""
-    },
-    "ceapa": {
-        "amount": "1",
-        "unit": ""
-    },
-    "smantana": {
-        "amount": "200",
-        "unit": "g"
-    },
-    "smantana pentru gatit": {
-        "amount": "200",
-        "unit": "ml"
-    },
-    "catei de usturoi": {
-        "amount": "3-4",
-        "unit": ""
-    }
+    "dovlecei": [
+        {
+            "amount": 2.0,
+            "unit": "kg"
+        },
+        {
+            "amount": 5.0,
+            "unit": ""
+        },
+        {
+            "amount": "2.5",
+            "unit": ""
+        }
+    ],
+    "morcovi mici": [
+        {
+            "amount": "4",
+            "unit": ""
+        }
+    ],
+    "faina": [
+        {
+            "amount": 400.0,
+            "unit": "g"
+        }
+    ],
+    "lapte": [
+        {
+            "amount": 300.0,
+            "unit": "ml"
+        }
+    ],
+    "bacon": [
+        {
+            "amount": "200",
+            "unit": "g"
+        }
+    ],
+    "patrunjel": [
+        {
+            "amount": 2.0,
+            "unit": "legatura"
+        }
+    ],
+    "cascaval": [
+        {
+            "amount": "200",
+            "unit": "g"
+        }
+    ],
+    "ulei": [
+        {
+            "amount": "3",
+            "unit": "linguri"
+        }
+    ],
+    "oua": [
+        {
+            "amount": 11.0,
+            "unit": ""
+        }
+    ],
+    "ceapa mare": [
+        {
+            "amount": "1",
+            "unit": ""
+        }
+    ],
+    "praf de copt": [
+        {
+            "amount": "10",
+            "unit": "g"
+        }
+    ],
+    "piper": [
+        {
+            "amount": "putina",
+            "unit": ""
+        }
+    ],
+    "ceapa": [
+        {
+            "amount": "1",
+            "unit": ""
+        }
+    ],
+    "smantana": [
+        {
+            "amount": "200",
+            "unit": "g"
+        }
+    ],
+    "ierburi aromatice": [
+        {
+            "amount": 2.0,
+            "unit": "lingura"
+        }
+    ],
+    "smantana pentru gatit": [
+        {
+            "amount": "200",
+            "unit": "ml"
+        }
+    ],
+    "catei de usturoi": [
+        {
+            "amount": "3-4",
+            "unit": ""
+        }
+    ],
+    "sare": [
+        {
+            "amount": "putina",
+            "unit": ""
+        }
+    ],
+    "pesmet": [
+        {
+            "amount": "150",
+            "unit": "g"
+        }
+    ]
 }
