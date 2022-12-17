@@ -2,20 +2,16 @@
     "dovlecei": [
         {
             "amount": 5.0,
-            "unit": ""
+            "unit": "bucata"
         },
         {
             "amount": 2.0,
-            "unit": "kg"
-        },
-        {
-            "amount": "1",
             "unit": "kg"
         }
     ],
     "pesmet": [
         {
-            "amount": "150",
+            "amount": 150.0,
             "unit": "g"
         }
     ],
@@ -28,7 +24,7 @@
     "oua": [
         {
             "amount": 11.0,
-            "unit": ""
+            "unit": "bucata"
         }
     ],
     "ierburi aromatice": [
@@ -39,14 +35,14 @@
     ],
     "sare": [
         {
-            "amount": "putina",
-            "unit": ""
+            "amount": 3.0,
+            "unit": "bucata"
         }
     ],
     "piper": [
         {
-            "amount": "putin",
-            "unit": ""
+            "amount": 4.0,
+            "unit": "bucata"
         }
     ],
     "lapte": [
@@ -57,13 +53,13 @@
     ],
     "morcovi mici": [
         {
-            "amount": "4",
-            "unit": ""
+            "amount": 4.0,
+            "unit": "bucata"
         }
     ],
     "bacon": [
         {
-            "amount": "200",
+            "amount": 200.0,
             "unit": "g"
         }
     ],
@@ -75,50 +71,50 @@
     ],
     "cascaval": [
         {
-            "amount": "200",
+            "amount": 200.0,
             "unit": "g"
         }
     ],
     "ulei": [
         {
-            "amount": "3-4",
+            "amount": 7.0,
             "unit": "linguri"
         }
     ],
     "ceapa mare": [
         {
-            "amount": "1",
-            "unit": ""
+            "amount": 1.0,
+            "unit": "bucata"
         }
     ],
     "praf de copt": [
         {
-            "amount": "10",
+            "amount": 10.0,
             "unit": "g"
         }
     ],
     "ceapa": [
         {
-            "amount": "1",
-            "unit": ""
+            "amount": 1.0,
+            "unit": "bucata"
         }
     ],
     "smantana": [
         {
-            "amount": "200",
+            "amount": 200.0,
             "unit": "g"
         }
     ],
     "smantana pentru gatit": [
         {
-            "amount": "200",
+            "amount": 200.0,
             "unit": "ml"
         }
     ],
     "catei de usturoi": [
         {
-            "amount": "3-4",
-            "unit": ""
+            "amount": 4.0,
+            "unit": "bucata"
         }
     ]
 }
