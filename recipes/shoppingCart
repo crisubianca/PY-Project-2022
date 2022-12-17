@@ -1,34 +1,64 @@
 {
     "dovlecei": [
         {
-            "amount": 2.0,
+            "amount": "2.5",
+            "unit": ""
+        },
+        {
+            "amount": "1",
             "unit": "kg"
         },
         {
-            "amount": 5.0,
-            "unit": ""
-        },
+            "amount": "1",
+            "unit": "kg"
+        }
+    ],
+    "pesmet": [
         {
-            "amount": "2.5",
+            "amount": "150",
+            "unit": "g"
+        }
+    ],
+    "faina": [
+        {
+            "amount": "250",
+            "unit": "g"
+        }
+    ],
+    "oua": [
+        {
+            "amount": "6",
             "unit": ""
+        }
+    ],
+    "ierburi aromatice": [
+        {
+            "amount": "1",
+            "unit": "lingura"
+        }
+    ],
+    "sare": [
+        {
+            "amount": "putina",
+            "unit": ""
+        }
+    ],
+    "piper": [
+        {
+            "amount": "putin",
+            "unit": ""
+        }
+    ],
+    "lapte": [
+        {
+            "amount": "200",
+            "unit": "ml"
         }
     ],
     "morcovi mici": [
         {
             "amount": "4",
             "unit": ""
-        }
-    ],
-    "faina": [
-        {
-            "amount": 400.0,
-            "unit": "g"
-        }
-    ],
-    "lapte": [
-        {
-            "amount": 300.0,
-            "unit": "ml"
         }
     ],
     "bacon": [
@@ -39,7 +69,7 @@
     ],
     "patrunjel": [
         {
-            "amount": 2.0,
+            "amount": "1",
             "unit": "legatura"
         }
     ],
@@ -51,14 +81,8 @@
     ],
     "ulei": [
         {
-            "amount": "3",
+            "amount": "3-4",
             "unit": "linguri"
-        }
-    ],
-    "oua": [
-        {
-            "amount": 11.0,
-            "unit": ""
         }
     ],
     "ceapa mare": [
@@ -73,12 +97,6 @@
             "unit": "g"
         }
     ],
-    "piper": [
-        {
-            "amount": "putina",
-            "unit": ""
-        }
-    ],
     "ceapa": [
         {
             "amount": "1",
@@ -91,12 +109,6 @@
             "unit": "g"
         }
     ],
-    "ierburi aromatice": [
-        {
-            "amount": 2.0,
-            "unit": "lingura"
-        }
-    ],
     "smantana pentru gatit": [
         {
             "amount": "200",
@@ -107,18 +119,6 @@
         {
             "amount": "3-4",
             "unit": ""
-        }
-    ],
-    "sare": [
-        {
-            "amount": "putina",
-            "unit": ""
-        }
-    ],
-    "pesmet": [
-        {
-            "amount": "150",
-            "unit": "g"
         }
     ]
 }

@@ -13,15 +13,24 @@ directory = "recipes/"
 recipe = {} # it's not an actual recipe, more like a list of shopping cart
 
 def custom_merge(dictionary, subdictionary, ingredient_name):
-    if ingredient_name in dictionary  :
+    if ingredient_name in dictionary :
         for i in range(len(dictionary[ingredient_name])):
             if dictionary[ingredient_name][i]['unit'] == subdictionary['unit']:
                 try:
-                    dictionary[ingredient_name][i]['amount'] = float(dictionary[ingredient_name][i]['amount']) + float(subdictionary['amount'])
+                    for key, value in subdictionary.items():
+                        if type(value) == str:
+                            dict = {**dictionary[ingredient_name][i], **subdictionary}
+                            dictionary[ingredient_name][i]['amount'] = dict['amount']
+                        else:
+                            # subdictionary_clean = subdictionary['amount'].strip().replace("-", ".").split(".")[0]
+                            dictionary[ingredient_name][i]['amount'] = float(dictionary[ingredient_name][i]['amount']) + float(subdictionary['amount'])
+
                 except ValueError as error:
                     print(error)
-            else :
+                    dictionary[ingredient_name] = [subdictionary]
+            else:
                 dictionary[ingredient_name].append(subdictionary)
+
     else:
         dictionary[ingredient_name] =[subdictionary]
 
@@ -72,10 +81,9 @@ def writeInJson(shopping_cart):
 
 
 def main():
-    links = ['https://jamilacuisine.ro/budinca-de-dovlecei-cu-bacon-reteta-video/',
-             'https://jamilacuisine.ro/dovlecei-cu-sos-de-smantana-reteta-video/',
-             'https://jamilacuisine.ro/dovlecei-pane-in-crusta-de-pesmet-si-in-aluat/'
-             ]
+    links = ['https://jamilacuisine.ro/dovlecei-pane-in-crusta-de-pesmet-si-in-aluat/',
+             'https://jamilacuisine.ro/budinca-de-dovlecei-cu-bacon-reteta-video/',
+             'https://jamilacuisine.ro/dovlecei-cu-sos-de-smantana-reteta-video/']
     for link in links:
         scrapeRecipe(link)
 
