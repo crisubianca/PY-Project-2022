@@ -17,14 +17,16 @@ def custom_merge(dictionary, subdictionary, ingredient_name):
         for i in range(len(dictionary[ingredient_name])):
             if dictionary[ingredient_name][i]['unit'] == subdictionary['unit']:
                 try:
-                    for key, value in subdictionary.items():
-                        if type(value) == str:
-                            dict = {**dictionary[ingredient_name][i], **subdictionary}
-                            dictionary[ingredient_name][i]['amount'] = dict['amount']
-                        else:
-                            # subdictionary_clean = subdictionary['amount'].strip().replace("-", ".").split(".")[0]
-                            dictionary[ingredient_name][i]['amount'] = float(dictionary[ingredient_name][i]['amount']) + float(subdictionary['amount'])
-
+                    try:
+                        # subdictionary_clean = subdictionary['amount'].strip().replace("-", ".").split(".")[0]
+                        dictionary[ingredient_name][i]['amount'] = float(
+                            dictionary[ingredient_name][i]['amount']) + float(subdictionary['amount'])
+                    except ValueError as error:
+                        for key, value in subdictionary.items():
+                            # print(f'{key}: {type(value)}')
+                            if type(value) == str:
+                                dict = {**dictionary[ingredient_name][i], **subdictionary}
+                                dictionary[ingredient_name][i]['amount'] = dict['amount']
                 except ValueError as error:
                     print(error)
                     dictionary[ingredient_name] = [subdictionary]
